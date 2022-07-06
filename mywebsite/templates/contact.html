@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body %} 
+<style>
+body{
+  height: 100vh;
+  min-height: 300px;
+  background: no-repeat scroll center scroll;
+  -webkit-background: cover;
+  background-size: cover;
+  background-image: url("/static/images/pet7.jpg");
+}
+h1{
+  text-align: center;
+  color:royalblue;
+}
+input{
+  opacity: 0.5;
+}
+textarea{
+  opacity: 0.5;
+}
+.center{
+  margin: 30 auto; 
+width:250px;
+
+}
+label{
+  color:royalblue;
+  font-style:italic;
+}
+button{
+  color: royalblue;
+}
+.margin{
+  margin: 10%;
+}
+
+
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet"> 
+
+<div class="container">
+  <form method="post" action='/contact' class="center">
+    {% csrf_token %}
+    <h1>Contact us</h1>
+    <div class="margin">
+    <label>Name:
+    <input  type="text" name="name" placeholder="Enter your name" required><br>
+    </label>
+    </div>
+    <div>
+    <label class="margin">Phone no:
+    <input  type="number" name="phone" placeholder="Enter your number" required><br>
+  </label>
+</div>
+  <div class="margin" >
+    <label>Message:
+      <textarea name="textarea" placeholder="Message" required></textarea><br>
+    </label>
+  </div>
+        <button class="margin" type="submit">Send</button>
+    
+  </form>
+
+</div>
+
+{% if messages %}
+      {% for message in messages %}
+      <div class="m-4">
+        <div class="alert alert-success alert-dismissible fade show">
+            <h1> {{ message }} </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+      {% endfor %}
+      {% endif %}
+
+{% endblock body %}

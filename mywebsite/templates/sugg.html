@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Something{% endblock title %}
+
+{% block body %}
+{% for suggest in sugg %}    
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+    </ul>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">PetCare</h5>
+    <h3 class="card-text">{{ suggest.smessage }}</h3>
+    <a class="btn btn-primary">{{ suggest.sname }}</a>
+  </div>
+</div>
+{% endfor %}
+{% endblock body %}
